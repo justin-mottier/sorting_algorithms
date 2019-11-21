@@ -84,20 +84,20 @@ TAILLES = [100000]
 
 sys.setrecursionlimit(100000)
 
-for i in range(100):
+for _ in range(100):
     for taille in TAILLES:
         tab_a = create_array(taille)
         tab_b = tab_a.copy()
         tab_c = tab_a.copy()
 
-        # start_a = time.time()
-        # buble_sort(tab_a)
-        # end_a = time.time()
-        # output_a = str(end_a - start_a)
-        # print(output_a)
-        # res_a = open("benchmark/buble_" + str(taille), "a")
-        # res_a.write(output_a + "\n")
-        # res_a.close()
+        start_a = time.time()
+        buble_sort(tab_a)
+        end_a = time.time()
+        output_a = str(end_a - start_a)
+        print(output_a)
+        res_a = open("benchmark/bubble_" + str(taille), "a")
+        res_a.write(output_a + "\n")
+        res_a.close()
 
         start_b = time.time()
         quicksort(tab_b)
@@ -108,11 +108,11 @@ for i in range(100):
         res_b.write(output_b + "\n")
         res_b.close()
 
-        # start_c = time.time()
-        # fusion(tab_c)
-        # end_c = time.time()
-        # output_c = str(end_c - start_c)
-        # print(output_c)
-        # res_c = open("benchmark/fusion_" + str(taille), "a")
-        # res_c.write(output_c + "\n")
-        # res_c.close()
+        start_c = time.time()
+        fusion(tab_c)
+        end_c = time.time()
+        output_c = str(end_c - start_c)
+        print(output_c)
+        res_c = open("benchmark/fusion_" + str(taille), "a")
+        res_c.write(output_c + "\n")
+        res_c.close()
