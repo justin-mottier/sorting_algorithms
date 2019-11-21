@@ -10,48 +10,48 @@ def create_array(size):
     """
     create an array of size numbers between 0 and 100
     """
-    arr_ay = []
+    array = []
     for _ in range(size):
-        arr_ay.append(random.randint(0, 100))
-    return arr_ay
+        array.append(random.randint(0, 100))
+    return array
 
-def swap(arr_ay, index_a, index_b):
+def swap(array, index_a, index_b):
     """
     swap the index of two elements in an array
     """
-    tmp = arr_ay[index_a]
-    arr_ay[index_a] = arr_ay[index_b]
-    arr_ay[index_b] = tmp
+    tmp = array[index_a]
+    array[index_a] = array[index_b]
+    array[index_b] = tmp
 
-def buble_sort(arr_ay):
+def buble_sort(array):
     """
     sort an array with the buble sort method
     """
-    for _ in arr_ay:
-        for cpt_a in range(len(arr_ay) - 1):
-            if arr_ay[cpt_a] > arr_ay[cpt_a + 1]:
-                swap(arr_ay, cpt_a, cpt_a + 1)
+    for _ in array:
+        for cpt_a in range(len(array) - 1):
+            if array[cpt_a] > array[cpt_a + 1]:
+                swap(array, cpt_a, cpt_a + 1)
 
-def quicksort(arr_ay, first_index=0, last_index=-1):
+def quicksort(array, first_index=0, last_index=-1):
     """
     sort an array with the quicksort method
     """
     if last_index == -1:
-        last_index = len(arr_ay) - 1
+        last_index = len(array) - 1
 
     if last_index <= first_index:
         return
     pivot_index = last_index
-    pivot = arr_ay[pivot_index]
+    pivot = array[pivot_index]
     index = first_index
     while index < pivot_index:
-        if arr_ay[index] > pivot:
-            arr_ay.insert(pivot_index, arr_ay.pop(index))
+        if array[index] > pivot:
+            array.insert(pivot_index, array.pop(index))
             pivot_index -= 1
         else:
             index += 1
-    quicksort(arr_ay, first_index, pivot_index - 1)
-    quicksort(arr_ay, pivot_index + 1, last_index)
+    quicksort(array, first_index, pivot_index - 1)
+    quicksort(array, pivot_index + 1, last_index)
 
 def fusion(tab):
     """
