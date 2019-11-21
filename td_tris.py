@@ -23,9 +23,9 @@ def swap(array, index_a, index_b):
     array[index_a] = array[index_b]
     array[index_b] = tmp
 
-def buble_sort(array):
+def bubble_sort(array):
     """
-    sort an array with the buble sort method
+    sort an array with the bubble sort method
     """
     for _ in array:
         for cpt_a in range(len(array) - 1):
@@ -84,7 +84,7 @@ for _ in range(100):
         tab_c = tab_a.copy()
 
         start_a = time.time()
-        buble_sort(tab_a)
+        bubble_sort(tab_a)
         end_a = time.time()
         output_a = str(end_a - start_a)
         print(output_a)
