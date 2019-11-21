@@ -53,17 +53,17 @@ def quicksort(array, first_index=0, last_index=-1):
     quicksort(array, first_index, pivot_index - 1)
     quicksort(array, pivot_index + 1, last_index)
 
-def fusion(tab):
+def merge(tab):
     """
-    sort an array with the fusion sort method
+    sort an array with the merge sort method
     """
     if len(tab) == 1:
         return tab
-    return join(fusion(tab[:len(tab)//2]), fusion(tab[len(tab)//2:]))
+    return join(merge(tab[:len(tab)//2]), merge(tab[len(tab)//2:]))
 
 def join(arr_a, arr_b):
     """
-    fusion two sorted arrays
+    merge two sorted arrays
     """
     if not arr_a:
         return arr_b
@@ -73,11 +73,11 @@ def join(arr_a, arr_b):
         return [arr_a.pop(0)] + join(arr_a, arr_b)
     return [arr_b.pop(0)] + join(arr_a, arr_b)
 
-TAILLES = [10, 100, 1000, 10000] #, 100000]
+TAILLES = [10, 100, 1000, 10000, 100000]
 
 sys.setrecursionlimit(100000)
 
-for _ in range(100):
+for _ in range(1):
     for taille in TAILLES:
         tab_a = create_array(taille)
         tab_b = tab_a.copy()
@@ -102,10 +102,10 @@ for _ in range(100):
         res_b.close()
 
         start_c = time.time()
-        fusion(tab_c)
+        merge(tab_c)
         end_c = time.time()
         output_c = str(end_c - start_c)
         print(output_c)
-        res_c = open("benchmark/fusion_" + str(taille), "a")
+        res_c = open("benchmark/merge_" + str(taille), "a")
         res_c.write(output_c + "\n")
         res_c.close()
