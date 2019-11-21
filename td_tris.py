@@ -59,28 +59,21 @@ def fusion(tab):
     """
     if len(tab) == 1:
         return tab
-    return join(fusion(tab[0:int(len(tab)/2)]), fusion(tab[int(len(tab)/2):len(tab)]))
+    return join(fusion(tab[:len(tab)//2]), fusion(tab[len(tab)//2:]))
 
 def join(arr_a, arr_b):
     """
     fusion two sorted arrays
     """
-    if len(arr_b) == 0:
+    if not arr_a:
+        return arr_b
+    if not arr_b:
         return arr_a
-    insert(arr_a, arr_b.pop())
-    return join(arr_a, arr_b)
+    if arr_a[0] < arr_b[0]:
+        return [arr_a.pop(0)] + join(arr_a, arr_b)
+    return [arr_b.pop(0)] + join(arr_a, arr_b)
 
-def insert(arr_a, elem, cpt=0):
-    """
-    insert an element inside a sorted array
-    """
-    if cpt >= len(arr_a) or arr_a[cpt] > elem:
-        arr_a.insert(cpt, elem)
-    else:
-        insert(arr_a, elem, cpt + 1)
-
-TAILLES = [10, 100, 1000, 10000, 100000]
-TAILLES = [100000]
+TAILLES = [10, 100, 1000, 10000] #, 100000]
 
 sys.setrecursionlimit(100000)
 
