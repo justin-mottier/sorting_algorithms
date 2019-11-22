@@ -77,7 +77,7 @@ TAILLES = [10, 100, 1000, 10000, 100000]
 
 sys.setrecursionlimit(100000)
 
-for _ in range(1):
+for _ in range(100):
     for taille in TAILLES:
         tab_a = create_array(taille)
         tab_b = tab_a.copy()
